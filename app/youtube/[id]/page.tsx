@@ -1,7 +1,11 @@
 import { google } from "googleapis";
 
-export default async function Page() {
-  const res = await getList();
+export default async function Page({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  const res = await getList(id);
 
   return (
     <div className="h-screen">
