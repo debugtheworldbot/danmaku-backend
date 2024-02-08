@@ -1,10 +1,6 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
 
-export type YT_Response = {
-  time: number;
-  text: string;
-}[];
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id") || "86Gy035z_KA";
