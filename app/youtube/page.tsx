@@ -13,8 +13,8 @@ export default async function Page() {
     <div className="h-screen">
       {data.map((comment, index) => (
         <div key={index}>
-          {comment.timeStamp} ----
-          {comment.content}
+          {comment.time} ----
+          {comment.text}
         </div>
       ))}
     </div>

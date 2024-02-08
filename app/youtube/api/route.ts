@@ -2,8 +2,8 @@ import { google } from "googleapis";
 import { NextResponse } from "next/server";
 
 export type YT_Response = {
-  timeStamp: number;
-  content: string;
+  time: number;
+  text: string;
 }[];
 export async function GET() {
   const youtube = google.youtube({
@@ -27,8 +27,8 @@ export async function GET() {
     const timeStamp = parseInt(time?.[1] || "0");
 
     return {
-      timeStamp,
-      content: item.snippet?.topLevelComment?.snippet?.textOriginal,
+      time: timeStamp,
+      text: item.snippet?.topLevelComment?.snippet?.textOriginal,
     };
   });
   console.log("ssss", res);
