@@ -1,7 +1,7 @@
 import { YT_Response } from "./api/route";
 
 export default async function Page() {
-  const res = await fetch(process.env.URL + "/youtube/api", {
+  const res = await fetch(process.env.URL + "/youtube/api?id=5SrNE7BPxOs", {
     method: "GET",
     headers: {
       contentType: "application/json",

@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
-    const origin = process.env.ORIGIN || "https://danmaku.js.org";
     return [
       {
         // matching all API routes
