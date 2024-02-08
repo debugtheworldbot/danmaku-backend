@@ -1,26 +1,20 @@
-import { google } from "googleapis";
+import { YT_Response } from "./api/route";
 
 export default async function Page() {
-  const youtube = google.youtube({
-    version: "v3",
-    auth: "AIzaSyDOqNVSorlAfcAjUueXdEYtskFeJXQGFBk",
-  });
-  const result = await youtube.commentThreads.list({
-    part: ["snippet"],
-    maxResults: 100,
-    order: "relevance",
-    videoId: "86Gy035z_KA",
-  });
+  const res = await fetch(process.env.URL + "/youtube/api", {
+    method: "GET",
+    headers: {
+      contentType: "application/json",
+    },
+  }).then((res) => res.json());
+  const data = res.data as YT_Response;
 
-  console.log(result);
-  const withTimeFlag = result.data.items?.filter((item) =>
-    item.snippet?.topLevelComment?.snippet?.textDisplay?.includes("href"),
-  );
   return (
     <div className="h-screen">
-      {withTimeFlag?.map((comment) => (
-        <div key={comment.id}>
-          {comment.snippet?.topLevelComment?.snippet?.textOriginal}
+      {data.map((comment, index) => (
+        <div key={index}>
+          {comment.timeStamp} ----
+          {comment.content}
         </div>
       ))}
     </div>
