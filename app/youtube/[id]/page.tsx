@@ -20,32 +20,37 @@ export default async function Page({
 }
 
 const getList = async (id = "86Gy035z_KA") => {
-  const youtube = google.youtube({
-    version: "v3",
-    auth: process.env.GOOGLE_AUTH,
-  });
-  const list = await youtube.commentThreads.list({
-    part: ["snippet"],
-    maxResults: 100,
-    order: "relevance",
-    videoId: id,
-  });
-  const withTimeFlag = list.data.items?.filter((item) =>
-    item.snippet?.topLevelComment?.snippet?.textDisplay?.includes("href"),
-  );
+  try {
+    const youtube = google.youtube({
+      version: "v3",
+      auth: process.env.GOOGLE_AUTH,
+    });
+    const list = await youtube.commentThreads.list({
+      part: ["snippet"],
+      maxResults: 100,
+      order: "relevance",
+      videoId: id,
+    });
+    const withTimeFlag = list.data.items?.filter((item) =>
+      item.snippet?.topLevelComment?.snippet?.textDisplay?.includes("href"),
+    );
 
-  const timeRegex = /;t=(\d+)/;
+    const timeRegex = /;t=(\d+)/;
 
-  const res = withTimeFlag?.map((item) => {
-    const time =
-      item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
-    const timeStamp = parseInt(time?.[1] || "0");
+    const res = withTimeFlag?.map((item) => {
+      const time =
+        item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
+      const timeStamp = parseInt(time?.[1] || "0");
 
-    return {
-      time: timeStamp,
-      text: item.snippet?.topLevelComment?.snippet?.textOriginal,
-    };
-  });
+      return {
+        time: timeStamp,
+        text: item.snippet?.topLevelComment?.snippet?.textOriginal,
+      };
+    });
 
-  return res;
+    return res;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
 };
