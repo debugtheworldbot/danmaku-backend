@@ -8,7 +8,7 @@ const nextConfig = {
         headers: [
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://www.youtube.com",
+            value: "*",
           },
           {
             key: "Access-Control-Allow-Methods",
