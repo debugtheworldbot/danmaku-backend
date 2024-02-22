@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { getListWithTime } from "../_lib/utils";
 
 export default async function Page({
   params: { id },
@@ -8,13 +9,15 @@ export default async function Page({
   const res = await getList(id);
 
   return (
-    <div className="h-screen">
-      {res?.map((comment, index) => (
-        <div key={index}>
-          {comment.time} ----
-          {comment.text}
-        </div>
-      ))}
+    <div className="min-h-screen">
+      <ol className="list-disc px-8 max-w-[70%]">
+        {res?.map((comment, index) => (
+          <li key={index}>
+            <span className="text-blue-600 mr-4">{comment.time}</span>
+            {comment.text}
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
@@ -31,22 +34,7 @@ const getList = async (id = "86Gy035z_KA") => {
       order: "relevance",
       videoId: id,
     });
-    const withTimeFlag = list.data.items?.filter((item) =>
-      item.snippet?.topLevelComment?.snippet?.textDisplay?.includes("href"),
-    );
-
-    const timeRegex = /;t=(\d+)/;
-
-    const res = withTimeFlag?.map((item) => {
-      const time =
-        item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
-      const timeStamp = parseInt(time?.[1] || "0");
-
-      return {
-        time: timeStamp,
-        text: item.snippet?.topLevelComment?.snippet?.textOriginal,
-      };
-    });
+    const res = getListWithTime(list.data);
 
     return res;
   } catch (e) {

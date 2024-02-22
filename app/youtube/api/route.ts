@@ -1,5 +1,6 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
+import { getListWithTime } from "../_lib/utils";
 
 export async function GET(request: Request) {
   try {
@@ -15,22 +16,7 @@ export async function GET(request: Request) {
       order: "relevance",
       videoId: id,
     });
-    const withTimeFlag = list.data.items?.filter((item) =>
-      item.snippet?.topLevelComment?.snippet?.textDisplay?.includes("href"),
-    );
-
-    const timeRegex = /;t=(\d+)/;
-
-    const res = withTimeFlag?.map((item) => {
-      const time =
-        item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
-      const timeStamp = parseInt(time?.[1] || "0");
-
-      return {
-        time: timeStamp,
-        text: item.snippet?.topLevelComment?.snippet?.textOriginal,
-      };
-    });
+    const res = getListWithTime(list.data);
     return NextResponse.json({ data: res }, { status: 200 });
   } catch (e) {
     return NextResponse.json({ data: [] }, { status: 500 });
