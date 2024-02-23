@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: "/youtube/api/:path*",
+        source: "/youtube/:path*",
         headers: [
           {
             key: "Access-Control-Allow-Origin",

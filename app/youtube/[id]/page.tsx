@@ -13,7 +13,7 @@ export default async function Page({
   return (
     <div className="min-h-screen flex">
       <div>
-        <h1>live chat</h1>
+        <h1>live chat:{data?.channelId}</h1>
         {data?.pollingIntervalMillis} |||
         {data?.nextPageToken}
         <ol className="list-disc px-8">
@@ -77,6 +77,7 @@ const getLiveList = async (
     pollingIntervalMillis: data.pollingIntervalMillis,
     nextPageToken: data.nextPageToken,
     items: res || [],
+    channelId,
   };
 };
 
