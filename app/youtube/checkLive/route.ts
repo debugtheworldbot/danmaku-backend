@@ -4,7 +4,10 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id") || "gCNeDWCI0vo";
+    const id = searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ data: "id is required" }, { status: 500 });
+    }
     const youtube = google.youtube({
       version: "v3",
       auth: process.env.GOOGLE_AUTH,

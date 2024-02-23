@@ -4,11 +4,14 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const channelId =
-      searchParams.get("channelId") ||
-      "Cg0KC2dDTmVEV0NJMHZvKicKGFVDTnllLXdOQnFOTDVaekhTSmozbDhCZxILZ0NOZURXQ0kwdm8";
-    const pageToken =
-      searchParams.get("pageToken") || "GMOTi4TFwIQDIP3HmYrFwIQD";
+    const channelId = searchParams.get("channelId");
+    const pageToken = searchParams.get("pageToken") || undefined;
+    if (!channelId) {
+      return NextResponse.json(
+        { data: "channelId is required" },
+        { status: 500 },
+      );
+    }
     const youtube = google.youtube({
       version: "v3",
       auth: process.env.GOOGLE_AUTH,
