@@ -13,35 +13,23 @@ export type Database = {
         Row: {
           created_at: string;
           id: string;
-          list: Json[] | null;
+          text: string;
+          time: number;
           videoId: string;
         };
         Insert: {
           created_at?: string;
           id?: string;
-          list?: Json[] | null;
+          text: string;
+          time: number;
           videoId: string;
         };
         Update: {
           created_at?: string;
           id?: string;
-          list?: Json[] | null;
+          text?: string;
+          time?: number;
           videoId?: string;
-        };
-        Relationships: [];
-      };
-      notes: {
-        Row: {
-          id: number;
-          title: string | null;
-        };
-        Insert: {
-          id?: number;
-          title?: string | null;
-        };
-        Update: {
-          id?: number;
-          title?: string | null;
         };
         Relationships: [];
       };

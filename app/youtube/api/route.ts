@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
 import { getListWithTime } from "../_lib/utils";
+import { createClient } from "@/utils/supabase/server";
 
 export async function GET(request: Request) {
   try {
@@ -16,8 +17,22 @@ export async function GET(request: Request) {
       order: "relevance",
       videoId: id,
     });
+    const supabase = createClient();
+    const { data: dbList, error } = await supabase
+      .from("danmakus")
+      .select(
+        `text,
+        time`,
+      )
+      .eq("videoId", id);
+
+    if (error) {
+      return NextResponse.json({ data: error }, { status: 500 });
+    }
+
     const res = getListWithTime(list.data);
-    return NextResponse.json({ data: res }, { status: 200 });
+    const result = [...res, ...dbList].sort((a, b) => a.time - b.time);
+    return NextResponse.json({ data: result }, { status: 200 });
   } catch (e) {
     return NextResponse.json({ data: [] }, { status: 500 });
   }

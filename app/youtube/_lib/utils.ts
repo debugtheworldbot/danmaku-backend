@@ -9,18 +9,16 @@ export const getListWithTime = (
 
   const timeRegex = /;t=(\d+)/;
 
-  const res = withTimeFlag
-    ?.map((item) => {
-      const time =
-        item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
-      const timeStamp = parseInt(time?.[1] || "0");
+  const res = withTimeFlag?.map((item) => {
+    const time =
+      item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
+    const timeStamp = parseInt(time?.[1] || "0");
 
-      return {
-        time: timeStamp,
-        text: item.snippet?.topLevelComment?.snippet?.textOriginal,
-      };
-    })
-    .sort((a, b) => a.time - b.time);
+    return {
+      time: timeStamp,
+      text: item.snippet?.topLevelComment?.snippet?.textOriginal,
+    };
+  });
 
-  return res;
+  return res || [];
 };
