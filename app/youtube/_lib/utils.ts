@@ -3,8 +3,11 @@ import { youtube_v3 } from "googleapis";
 export const getListWithTime = (
   list: youtube_v3.Schema$CommentThreadListResponse,
 ) => {
-  const withTimeFlag = list.items?.filter((item) =>
-    item.snippet?.topLevelComment?.snippet?.textDisplay?.includes("href"),
+  const withTimeFlag = list.items?.filter(
+    (item) =>
+      item.snippet?.topLevelComment?.snippet?.textDisplay?.includes(
+        'href="https://www.youtube.com/watch',
+      ),
   );
 
   const timeRegex = /;t=(\d+)/;
