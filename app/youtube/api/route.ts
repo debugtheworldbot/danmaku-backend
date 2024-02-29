@@ -35,7 +35,8 @@ export async function GET(request: Request) {
     const res = getListWithTime(list.data);
     const result = [...res, ...dbList].sort((a, b) => a.time - b.time);
     return NextResponse.json({ data: result }, { status: 200 });
-  } catch (e) {
-    return NextResponse.json({ data: [] }, { status: 500 });
+  } catch (e: any) {
+    const msgs = e?.errors?.map((item: any) => item.message).join(",");
+    return NextResponse.json({ data: [], error: msgs }, { status: 400 });
   }
 }
