@@ -7,7 +7,8 @@ export const getListWithTime = (
     (item) =>
       item.snippet?.topLevelComment?.snippet?.textDisplay?.includes(
         'href="https://www.youtube.com/watch',
-      ),
+      ) &&
+      (item.snippet.topLevelComment.snippet.textOriginal || "").length < 300,
   );
 
   const timeRegex = /;t=(\d+)/;

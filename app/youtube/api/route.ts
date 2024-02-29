@@ -6,7 +6,9 @@ import { createClient } from "@/utils/supabase/server";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id") || "86Gy035z_KA";
+    const id = searchParams.get("id");
+    if (!id)
+      return NextResponse.json({ data: "id is required" }, { status: 400 });
     const youtube = google.youtube({
       version: "v3",
       auth: process.env.GOOGLE_AUTH,
