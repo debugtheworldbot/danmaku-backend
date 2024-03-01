@@ -32,7 +32,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ data: error }, { status: 500 });
     }
 
-    const res = getListWithTime(list.data);
+    const res = getListWithTime(list.data, id);
     const result = [...res, ...dbList].sort((a, b) => a.time - b.time);
     return NextResponse.json({ data: result }, { status: 200 });
   } catch (e: any) {

@@ -109,7 +109,7 @@ const getList = async (id = "86Gy035z_KA") => {
       order: "relevance",
       videoId: id,
     });
-    const res = getListWithTime(list.data);
+    const res = getListWithTime(list.data, id);
 
     return {
       res,
