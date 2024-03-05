@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   const supabase = createClient();
   const req = await request.json();
   try {
-    const { videoId, time, text } = req;
+    const { videoId, time, text, clientId } = req;
 
     if (!videoId || typeof time !== "number" || !text) {
       return NextResponse.json(
@@ -23,6 +23,7 @@ export async function POST(request: Request) {
           videoId,
           time,
           text,
+          clientId,
         },
       ])
       .select();
