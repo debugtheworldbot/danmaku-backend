@@ -1,5 +1,12 @@
 import { youtube_v3 } from "googleapis";
 
+export const formatTime = (s?: number) => {
+  if (!s) return "";
+  const minutes = Math.floor(s / 60);
+  const seconds = Math.floor(s % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
+
 export const getListWithTime = (
   list: youtube_v3.Schema$CommentThreadListResponse,
   id: string,
@@ -21,9 +28,13 @@ export const getListWithTime = (
     const time = timeR?.[1];
     const timeStamp = parseInt(time || "");
 
+    const displayTime = formatTime(timeStamp);
+    const originalText = item.snippet?.topLevelComment?.snippet?.textOriginal;
+    const finalText = originalText?.replace(displayTime, ``);
+
     return {
       time: timeStamp,
-      text: item.snippet?.topLevelComment?.snippet?.textOriginal,
+      text: finalText?.trim(),
     };
   });
 
