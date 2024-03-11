@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   try {
+    return NextResponse.json({ data: "no quota left" }, { status: 500 });
     const { searchParams } = new URL(request.url);
     const channelId = searchParams.get("channelId");
     const pageToken = searchParams.get("pageToken") || undefined;
