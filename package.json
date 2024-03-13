@@ -10,6 +10,7 @@
     "generate": "npx supabase gen types typescript --project-id egpayqdvxdijkfhinzaq --schema public > types/supabase.ts"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "@supabase/ssr": "^0.1.0",
     "cheerio": "1.0.0-rc.12",
     "googleapis": "^132.0.0",
