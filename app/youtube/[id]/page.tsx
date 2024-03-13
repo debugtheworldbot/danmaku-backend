@@ -36,7 +36,7 @@ export default async function Page({
           {res?.map((comment, index) => (
             <li key={index}>
               <span className="text-blue-600 mr-4">{comment.time}</span>
-              {comment.text}
+              <div dangerouslySetInnerHTML={{ __html: comment.text || "" }} />
             </li>
           ))}
         </ol>

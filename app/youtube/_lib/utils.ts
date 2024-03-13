@@ -1,4 +1,5 @@
 import { youtube_v3 } from "googleapis";
+import { parseEmoji } from "./parseEmoji";
 
 export const formatTime = (s?: number) => {
   if (!s) return "";
@@ -28,13 +29,12 @@ export const getListWithTime = (
     const time = timeR?.[1];
     const timeStamp = parseInt(time || "");
 
-    const displayTime = formatTime(timeStamp);
-    const originalText = item.snippet?.topLevelComment?.snippet?.textOriginal;
-    const finalText = originalText?.replace(displayTime, ``);
+    const originalText = item.snippet?.topLevelComment?.snippet?.textDisplay;
+    const output = parseEmoji(originalText || "");
 
     return {
       time: timeStamp,
-      text: finalText?.trim(),
+      text: output,
     };
   });
 
