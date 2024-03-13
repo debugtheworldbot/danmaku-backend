@@ -5,8 +5,9 @@ const Options: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="flex justify-between items-center py-3 px-12 w-screen bg-white">
-        <div className="flex-1">
+        <div className="flex-1 flex items-center gap-4">
           <Logo />
+          <span> A Chrome extension to display danmaku in youtube </span>
         </div>
         <a
           className="rounded-full bg-primary py-1 px-4 text-white font-medium text-base mr-4"
