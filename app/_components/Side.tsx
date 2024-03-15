@@ -6,6 +6,14 @@ import React from "react";
 export default function Side() {
   return (
     <aside className="self-center relative">
+      <a
+        className="rounded-full bg-primary py-1 px-4 text-white font-medium text-base mx-auto w-fit block"
+        rel="noreferrer"
+        target="_blank"
+        href="https://chromewebstore.google.com/detail/danmucat-display-youtube/agojppemajejogigonpnmjicgpmapmjd"
+      >
+        Chrome Extension
+      </a>
       <Bg />
 
       <div className="absolute top-[20%]">
@@ -16,8 +24,8 @@ export default function Side() {
 }
 const Bg = () => (
   <svg
-    width="360"
-    height="640"
+    width="340"
+    height="620"
     viewBox="0 0 360 640"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

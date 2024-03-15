@@ -3,20 +3,14 @@ import Side from "./_components/Side";
 
 const Options: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-screen">
       <header className="flex justify-between items-center py-3 px-12 w-screen bg-white">
         <div className="flex-1 flex items-center gap-4">
           <Logo />
-          <span> A Chrome extension to display danmaku in youtube </span>
+          <span className="md:block hidden">
+            A Chrome extension to display danmaku in youtube{" "}
+          </span>
         </div>
-        <a
-          className="rounded-full bg-primary py-1 px-4 text-white font-medium text-base mr-4"
-          rel="noreferrer"
-          target="_blank"
-          href="https://chromewebstore.google.com/detail/danmucat-display-youtube/agojppemajejogigonpnmjicgpmapmjd"
-        >
-          Chrome Extension
-        </a>
         <a
           className="rounded-full bg-primary py-1 px-4 text-white font-medium text-base"
           rel="noreferrer"
@@ -26,9 +20,9 @@ const Options: React.FC = () => {
           Feedback
         </a>
       </header>
-      <div className="flex-1 flex bg-[#FCFAF0] p-12 gap-8">
+      <div className="flex-1 flex flex-col-reverse md:flex-row bg-[#FCFAF0] md:p-12 p-4 gap-8">
         <Side />
-        <main className="flex-1 flex flex-col bg-white rounded-xl p-12">
+        <main className="flex-1 flex flex-col bg-white rounded-xl md:p-12 p-4">
           <h2 className="mb-8 text-2xl font-semibold text-gray-900 leading-4">
             Shortcuts
           </h2>
