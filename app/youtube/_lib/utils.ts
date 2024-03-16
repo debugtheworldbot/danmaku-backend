@@ -24,8 +24,8 @@ export const getListWithTime = (
   const timeRegex = /;t=(\d+)/;
 
   const res = withTimeFlag?.map((item) => {
-    const timeR =
-      item.snippet?.topLevelComment?.snippet?.textDisplay?.match(timeRegex);
+    const displayText = item.snippet?.topLevelComment?.snippet?.textDisplay;
+    const timeR = displayText?.match(timeRegex);
     const time = timeR?.[1];
     const timeStamp = parseInt(time || "");
 
@@ -35,6 +35,7 @@ export const getListWithTime = (
     return {
       time: timeStamp,
       text: output,
+      displayText: item.snippet?.topLevelComment?.snippet?.textOriginal,
     };
   });
 
