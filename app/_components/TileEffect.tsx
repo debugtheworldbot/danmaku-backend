@@ -1,6 +1,6 @@
 "use client";
 import { useState, MouseEvent, useCallback } from "react";
-import Side from "./Side";
+import Image from "next/image";
 
 function throttle<T extends (...args: any[]) => any>(
   func: T,
@@ -51,7 +51,8 @@ export const TiltEffect = () => {
           transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
         }}
       >
-        <Side />
+        {/* <Side /> */}
+        <Image src="/yt_icon.png" width={400} height={400} alt="yt-icon" />
       </div>
     </>
   );
