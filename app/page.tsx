@@ -1,5 +1,6 @@
 import { Logo } from "./_components/Logo";
 import Side from "./_components/Side";
+import { TiltEffect } from "./_components/TileEffect";
 
 const Options: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const Options: React.FC = () => {
         <div className="flex-1 flex items-center gap-4">
           <Logo />
           <span className="md:block hidden">
-            A Chrome extension to display danmaku in youtube{" "}
+            A Chrome extension to display danmaku in youTube
           </span>
         </div>
         <a
@@ -21,7 +22,7 @@ const Options: React.FC = () => {
         </a>
       </header>
       <div className="flex-1 flex flex-col-reverse md:flex-row bg-[#FCFAF0] md:p-12 p-4 gap-8">
-        <Side />
+        <TiltEffect />
         <main className="flex-1 flex flex-col bg-white rounded-xl md:p-12 p-4">
           <h2 className="mb-8 text-2xl font-semibold text-gray-900 leading-4">
             Shortcuts
@@ -69,7 +70,7 @@ const Options: React.FC = () => {
                   <td className="px-4 py-4 leading-6">
                     <div>Close danmaku send dashboard</div>
                     suggest use <span className="font-bold">Ctrl + q</span>,
-                    beacuse Esc will quit fullscreen mode :)
+                    because Esc will quit fullscreen mode :)
                   </td>
                 </tr>
               </tbody>
