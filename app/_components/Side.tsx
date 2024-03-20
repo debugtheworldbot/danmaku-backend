@@ -14,11 +14,11 @@ export default function Side() {
       >
         Chrome Extension
       </a>
-      <Bg />
-
-      <div className="absolute top-[20%]">
-        <Player speed={1.25} autoplay loop src={anim} className="h-120" />
-      </div>
+      {/* <Bg /> */}
+      {/**/}
+      {/* <div className="absolute top-[20%]"> */}
+      {/*   <Player speed={1.25} autoplay loop src={anim} className="h-120" /> */}
+      {/* </div> */}
     </aside>
   );
 }

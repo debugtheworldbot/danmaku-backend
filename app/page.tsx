@@ -24,6 +24,7 @@ const Options: React.FC = () => {
       <div className="flex-1 flex flex-col-reverse md:flex-row bg-[#FCFAF0] md:p-12 p-4 gap-8">
         <TiltEffect />
         <main className="flex-1 flex flex-col bg-white rounded-xl md:p-12 p-4">
+          <Side />
           <h2 className="mb-8 text-2xl font-semibold text-gray-900 leading-4">
             Shortcuts
           </h2>

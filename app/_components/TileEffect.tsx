@@ -52,7 +52,13 @@ export const TiltEffect = () => {
         }}
       >
         {/* <Side /> */}
-        <Image src="/yt_icon.png" width={400} height={400} alt="yt-icon" />
+        <Image
+          priority={false}
+          src="/yt_icon.png"
+          width={400}
+          height={400}
+          alt="yt-icon"
+        />
       </div>
     </>
   );
