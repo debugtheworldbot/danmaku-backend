@@ -1,3 +1,5 @@
+import { Danmu, Play, Read, Send } from "./_components/Icons";
+
 export default async function Home() {
   return (
     <div className="h-full bg-[#FCFAF0] overflow-auto">
@@ -18,10 +20,8 @@ export default async function Home() {
             Add to Chrome
           </a>
         </header>
-        <main className="h-full text-center text-5xl font-semibold mt-40">
-          <h1>Read Send Show</h1>
-          <h1 className="my-6">DanmuCat</h1>
-          <h1>On YouTube videos</h1>
+        <main className="h-full text-center text-5xl font-medium md:mt-52 mt-12">
+          <Title />
         </main>
       </div>
       <div className="h-full">
@@ -32,3 +32,17 @@ export default async function Home() {
     </div>
   );
 }
+
+const Title = () => (
+  <>
+    <h1 className="flex items-center justify-center gap-2 flex-wrap">
+      Read <Read /> Send <Send /> Show
+    </h1>
+    <h1 className="my-6">
+      DanmuCat <Danmu />
+    </h1>
+    <h1>
+      <Play /> On YouTube videos
+    </h1>
+  </>
+);
