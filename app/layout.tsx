@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import localFont from "next/font/local";
+
+// Font files can be colocated inside of `app`
+const myFont = localFont({
+  src: [
+    {
+      path: "./NeverMind-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./NeverMind-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./NeverMind-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "DanmuCat",
@@ -20,7 +40,7 @@ export default function RootLayout({
         name="google-site-verification"
         content="-WMwHgwDcrghJdvwR8mxBsawDcF3tatuDRK5tzcrCJ4"
       />
-      <body className={inter.className}>{children}</body>
+      <body className={myFont.className}>{children}</body>
     </html>
   );
 }
