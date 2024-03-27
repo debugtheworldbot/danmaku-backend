@@ -1,4 +1,5 @@
 import { Danmu, Play, Read, Send } from "./_components/Icons";
+import Image from "next/image";
 
 export default async function Home() {
   return (
@@ -20,14 +21,20 @@ export default async function Home() {
             Add to Chrome
           </a>
         </header>
-        <main className="h-full text-center text-5xl font-medium md:mt-52 mt-12">
+        <main className="h-full text-center text-[4rem] font-medium md:mt-52 mt-12">
           <Title />
         </main>
       </div>
-      <div className="h-full">
-        <h1>Read Send Show</h1>
-        <h1>DanmuCat</h1>
-        <h1>On YouTube videos</h1>
+      <div className="h-full p-6 ">
+        <div className="relative h-full">
+          <Image
+            className="mx-auto"
+            src="/desc.png"
+            alt="desc"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       </div>
     </div>
   );
