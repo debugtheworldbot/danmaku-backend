@@ -21,16 +21,13 @@ export default async function Home() {
             Add to Chrome
           </a>
         </header>
-        <main className="h-full text-center text-[4rem] font-medium md:mt-52 mt-12">
+        <main className="text-center text-[4rem] font-medium md:mt-30 mt-12">
           <Title />
         </main>
-      </div>
-      <div className="h-full p-6 ">
-        <div className="relative h-full">
+        <div className="relative h-full mt-12">
           <Image
-            className="mx-auto"
             src="/desc.png"
-            alt="desc"
+            alt="intros"
             layout="fill"
             objectFit="contain"
           />
@@ -41,7 +38,7 @@ export default async function Home() {
 }
 
 const Title = () => (
-  <>
+  <div>
     <h1 className="flex items-center justify-center gap-2 flex-wrap">
       Read <Read /> Send <Send /> Show
     </h1>
@@ -51,5 +48,5 @@ const Title = () => (
     <h1>
       <Play /> On YouTube videos
     </h1>
-  </>
+  </div>
 );
