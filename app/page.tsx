@@ -16,7 +16,7 @@ export default async function Home() {
             className="rounded-full bg-black py-1 px-4 text-white font-medium text-base"
             rel="noreferrer"
             target="_blank"
-            href="https://github.com/debugtheworldbot/danmaku/issues"
+            href="https://chromewebstore.google.com/detail/danmucat-show-youtube-vid/agojppemajejogigonpnmjicgpmapmjd"
           >
             Add to Chrome
           </a>
